@@ -3,15 +3,15 @@ const Pet = require('../src/pet');
 describe('constructor', () =>{
     let pet
     beforeEach(() => {
-        pet = new Pet('Fido');
+        pet = new Pet('Daphne');
       });
 
     it('returns an object', () => {
-        expect(new Pet('Fido')).toBeInstanceOf(Object);
+        expect(new Pet('Daphne')).toBeInstanceOf(Object);
     });
 
     it('sets the name property', () => {
-        expect(pet.name).toEqual('Fido');
+        expect(pet.name).toEqual('Daphne');
     });
 
     it('has an inital age of 0', () => {
@@ -30,7 +30,7 @@ describe('constructor', () =>{
 describe('growUp function', () =>{
     let pet
     beforeEach(() => {
-        pet = new Pet('Fido');
+        pet = new Pet('Daphne');
     });
 
     it('growUp increases age by 1', () => {
@@ -39,17 +39,38 @@ describe('growUp function', () =>{
         expect(pet.age).toEqual(1)
     });
 
-    it('growUp increases hunger by 5', () =>{
+    it('growUp increases hunger by 5', () =>{ 
         pet.growUp();
 
         expect(pet.hunger).toEqual(5);
     });
 
-    it('growUp decreases fitness by 3', () =>{
+    it('growUp decreases fitness by 3', () => {
         pet.growUp();
 
         expect(pet.fitness).toEqual(7);
     });
+});
 
+describe('walk function', () =>{
+    let pet
+    beforeEach(() => {
+        pet = new Pet('Daphne');
+    });
+
+    it('walk increases fitness by 4', () => { 
+        pet.growUp()
+        pet.growUp()
+        pet.walk()
+
+        expect(pet.fitness).toEqual(8);
+    });
+
+    it('walk cannot increase fitness higher than 10', () => {
+        pet.growUp()
+        pet.walk()
+
+        expect(pet.fitness).toEqual(10);
+    });
 });
       
