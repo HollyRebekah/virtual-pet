@@ -21,8 +21,30 @@ Pet.prototype = {
        (this.fitness < 7 ? this.fitness += 4 : this.fitness = maximumFitness)
     },
 
-    feed: function(){
+    feed: function() {
         (this.hunger > 2 ? this.hunger -= 3 : this.hunger = minimumHunger)
+    },
+
+    checkUp: function() {
+        const checkUpFitness = this.fitness < 3
+        const checkUpHunger = this.hunger > 5
+
+        if (checkUpFitness && checkUpHunger){
+            return 'I am hungry AND I need a walk'
+        }
+
+        if (checkUpFitness){
+            return 'I need a walk'
+        }  
+        
+        if (checkUpHunger){
+            return 'I am hungry'
+        }
+
+        if (!checkUpHunger && !checkUpFitness){
+            return 'I feel great'
+        }
+
     }
 };
 
