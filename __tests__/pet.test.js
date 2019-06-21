@@ -71,6 +71,26 @@ describe('walk function', () =>{
         pet.walk()
 
         expect(pet.fitness).toEqual(10);
-    });
+    }); 
 });
+
+describe('feed function', () => { 
+    let pet
+    beforeEach(() => {
+        pet = new Pet('Daphne');
+    });
+
+    it('feed method decreases hunger by 3', () =>{ 
+        pet.growUp()
+        pet.feed()
+
+        expect(pet.hunger).toEqual(2)
+    });
+
+    it(' feed method cannot decrease hunger beyond 0', () => {
+        pet.feed()
+
+        expect(pet.hunger).toEqual(0)
+    })
+});   
       
