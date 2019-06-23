@@ -47,6 +47,11 @@ describe('growUp function', () =>{
         pet.growUp();
         expect(pet.fitness).toEqual(7);
     });
+
+    it('throws an error if the pet is not alive', () => {
+        pet.age = 30
+        expect(() => pet.growUp()).toThrow('Your pet is no longer alive')
+        });
 });
 
 describe('walk function', () =>{
@@ -56,17 +61,21 @@ describe('walk function', () =>{
     });
 
     it('walk increases fitness by 4', () => { 
-        pet.growUp()
-        pet.growUp()
+        pet.fitness = 4
         pet.walk()
         expect(pet.fitness).toEqual(8);
     });
 
     it('walk cannot increase fitness higher than 10', () => {
-        pet.growUp()
+        pet.fitness = 10
         pet.walk()
         expect(pet.fitness).toEqual(10);
     }); 
+
+    it('throws an error if the pet is not alive', () => {
+        pet.fitness = 0
+        expect(() => pet.walk()).toThrow('Your pet is no longer alive')
+        });
 });
 
 describe('feed function', () => { 
@@ -76,7 +85,7 @@ describe('feed function', () => {
     });
 
     it('feed method decreases hunger by 3', () =>{ 
-        pet.growUp()
+        pet.hunger = 5
         pet.feed()
         expect(pet.hunger).toEqual(2)
     });
@@ -85,6 +94,11 @@ describe('feed function', () => {
         pet.feed()
         expect(pet.hunger).toEqual(0)
     })
+
+    it('throws an error if the pet is not alive', () => {
+        pet.age = 30
+        expect(() => pet.feed()).toThrow('Your pet is no longer alive')
+        });
 });  
 
 describe('checkUp function', () => { 
@@ -139,7 +153,5 @@ describe('isAlive getter method', () => {
         pet.fitness = 0
         expect(pet.isAlive).toEqual(false)
     });
-
-
 });
       

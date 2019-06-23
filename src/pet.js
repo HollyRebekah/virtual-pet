@@ -11,27 +11,35 @@ function Pet(name) {
 }
 
 Pet.prototype = {
-    get isAlive() {
+    get isAlive () {
             const alive =  this.age < 30 && this.hunger < 10 && this.fitness > 0;
-            if (alive) {
-                return true
-          }
-          else {
-              return false
-          }
+            if (alive) { return true }
+            return false  
     },     
 
     growUp: function() {
+        if (!this.isAlive) {
+            throw new Error ('Your pet is no longer alive');
+        }
+
         this.age += 1
         this.hunger += 5
         this.fitness -= 3
     },
 
     walk: function() {
+        if (!this.isAlive) {
+            throw new Error ('Your pet is no longer alive');
+        };
+
        (this.fitness < 7 ? this.fitness += 4 : this.fitness = maximumFitness)
     },
 
     feed: function() {
+        if (!this.isAlive) {
+            throw new Error ('Your pet is no longer alive');
+        };
+
         (this.hunger > 2 ? this.hunger -= 3 : this.hunger = minimumHunger)
     },
 
