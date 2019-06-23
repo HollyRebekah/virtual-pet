@@ -114,4 +114,21 @@ describe('checkUp function', () => {
         expect(pet.checkUp()).toEqual('I feel great')
     })
 });
+
+describe('isAlive getter method', () => { 
+    let pet
+    beforeEach(() => {
+        pet = new Pet('Daphne');
+    });
+
+    it('has a isAlive getter method', () => {
+        expect(pet.isAlive).toEqual(true)
+    });
+
+    it('isAlive returns false when age is over 30', () => {
+        pet.age = 30
+        expect(pet.isAlive).toEqual(false)
+    });
+
+});
       
