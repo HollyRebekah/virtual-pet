@@ -130,5 +130,16 @@ describe('isAlive getter method', () => {
         expect(pet.isAlive).toEqual(false)
     });
 
+    it('isAlive returns false when hunger is over 10', () => {
+        pet.hunger = 10
+        expect(pet.isAlive).toEqual(false)
+    });
+
+    it('isAlive returns false when fitness is 0', () => {
+        pet.fitness = 0
+        expect(pet.isAlive).toEqual(false)
+    });
+
+
 });
       
