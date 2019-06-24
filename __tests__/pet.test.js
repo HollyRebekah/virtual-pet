@@ -154,4 +154,39 @@ describe('isAlive getter method', () => {
         expect(pet.isAlive).toEqual(false)
     });
 });
-      
+
+describe('adopt a child method', () => { 
+    let parent
+    let child
+    beforeEach(() => {
+        parent = new Pet('Daphne');
+        child = new Pet('Denzel');
+    });
+
+    it('returns 2 instances', () =>{
+        expect(new Pet('Daphne')).toBeInstanceOf(Object)
+        expect(new Pet('Denzel')).toBeInstanceOf(Object)
+    });
+
+    it('takes the child as an argument and passes child into array in children propery', () =>{
+        parent.adoptAChild(child)
+        expect(parent.children).toContain(child);
+    });
+});
+
+describe('have a baby method', () => { 
+    let parent
+    beforeEach(() => {
+        parent = new Pet('Daphne');
+    });
+
+    it('children property has an array', () => {
+        expect(parent.children).toEqual([]);
+    });
+
+    it('passes a new instance of Pet into children array when called', () => {
+        parent.haveABaby('Denzel')
+        expect(parent.children).toBeInstanceOf(Object)
+        expect(parent.children[0].name).toEqual('Denzel')
+    });
+});  

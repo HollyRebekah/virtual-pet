@@ -8,6 +8,7 @@ function Pet(name) {
     this.age = startingAge;
     this.hunger = startingHunger;
     this.fitness = maximumFitness
+    this.children = []
 }
 
 Pet.prototype = {
@@ -62,7 +63,15 @@ Pet.prototype = {
         if (!checkUpHunger && !checkUpFitness){
             return 'I feel great'
         }
+    },
 
+    adoptAChild: function(childName) {
+        this.children.push(childName)
+    },
+
+    haveABaby: function(babyName) {
+        const baby = new Pet (babyName);
+        this.children.push(baby);
     }
 };
 
